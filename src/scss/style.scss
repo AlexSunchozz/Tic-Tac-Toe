@@ -1,0 +1,107 @@
+@import 'nullstyle.scss';
+
+//--------------------------------------------------Общие стили-------------------------------------------//
+body{
+    height: 100%;
+    background-color: #000000;
+}
+body.lock{overflow: hidden;}
+body.lock{overflow: hidden;}
+.wrapper{
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    margin: 0 auto;
+    padding: 0px 71px;
+    @media (max-width:1200px){padding: 0px 40px;}
+    @media (max-width:600px){padding: 0px 20px;}
+    box-sizing: content-box;
+}
+._ibg{
+    position: relative;
+    img{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}
+.main{
+    flex: 1 1 auto;
+    position: relative;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 600px;
+    min-height: 600px;
+    & .row:nth-child(even) {
+        border-top: 5px solid #222222;
+        border-bottom: 5px solid #222222;
+        border-radius: 5px;
+    }
+    & .row .cell:nth-child(even), & .row .cell:nth-child(even) {
+        border-left: 5px solid #222222;
+        border-right: 5px solid #222222;
+        border-radius: 5px;
+    }
+}
+.row {
+    display: flex;
+    & .cell.active {
+        background-color: #222222;
+    } 
+    & .cell {
+        font-family: "Permanent Marker", cursive;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        line-height: 100px;
+        font-size: 200px;
+        color: white;
+
+        & .circle {
+            width: 100%;
+            height: 100%;
+            stroke-dasharray: 376;
+            stroke-dashoffset: 376;
+            animation: draw 0.7s ease-in-out forwards;
+        }
+
+        & .cross {
+            width: 100%;
+            height: 100%;
+            & .left {
+                stroke-dasharray: 160;
+                stroke-dashoffset: 160;
+                animation: draw 0.4s ease-in-out forwards;
+            }
+            & .right {
+                stroke-dasharray: 160;
+                stroke-dashoffset: 160;
+                animation: draw 0.4s 0.2s ease-in-out forwards;
+            }
+        }
+    }
+}
+
+@keyframes draw {
+    100% {stroke-dashoffset: 0;}
+}
